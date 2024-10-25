@@ -1,0 +1,58 @@
+﻿@*Define Model*@
+
+@model IEnumerable<Producer>;
+
+@{
+    ViewData["Title"] = "List of Producer"; // ViewData koleksiyonuna "Title" anahtarıyla "List of Actor" değerini ekler. sitemin başlığını veriyor.
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.ProfilePictureUrl)</th>
+                    <th>@Html.DisplayNameFor(m => m.FullName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Bio)</th>
+                    <th>İşlemler</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                @foreach (var producer in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle"
+                                 src="@producer.ProfilePictureUrl"
+                                 alt="@producer.FullName"
+                                 style="max-width=100px" />
+                        </td>
+                        <td class="align-middle">@Html.DisplayFor(mi => producer.FullName) </td>
+                        <td class="align-middle">@Html.DisplayFor(mi => producer.Bio)</td>
+                        <td class="align-middle">
+
+                            <a class="btn btn-outline-primary"> <i class="bi bi-pencil-square"></i> Güncelle </a>
+                            <a class="btn btn-outline-info"> <i class="bi bi-eye"></i> Detay </a>
+                            <a class="btn btn-outline-danger"> <i class="bi bi-trash"></i> Sil </a>
+
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+@*View Data*@
+
+@*Write Code*@
+
+
