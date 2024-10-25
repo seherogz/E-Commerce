@@ -4,7 +4,7 @@ using WebApplication1.Data.Services;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
-namespace ECommerce.Data.Services;
+namespace WebApplication1.Data.Services;
 
 public class ActorsService : IActorsService//bu class dbcontext e bağımlı
 {

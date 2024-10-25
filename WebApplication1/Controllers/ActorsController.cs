@@ -24,10 +24,13 @@ public class ActorsController : Controller
         var allActors = await _service.GetAllAsync();
         return View(allActors);
     }
+
+
     public async Task<IActionResult> Create()
     {
         return View();
     }
+
     [HttpPost]
     public async Task<IActionResult> Create(Actor actor)
     {
@@ -39,6 +42,7 @@ public class ActorsController : Controller
         return RedirectToAction(nameof(Index));
 
     }
+
     public async Task<IActionResult> Detail(int id)
     {
         var actorDetail = await _service.GetByIdAsync(id);
@@ -48,10 +52,14 @@ public class ActorsController : Controller
         }
         return View(actorDetail);
     }
+
+
     public async Task<IActionResult> EditAsync()
     {
         return View();
     }
+
+
     [HttpPost]
     public async Task<IActionResult> EditAsync(Actor actor) // burası odev olarak verıldı edit kısmı olacak 
     {
@@ -62,4 +70,5 @@ public class ActorsController : Controller
         await _service.UpdateAsync(actor);
         return RedirectToAction(nameof(Index));
     }
+
 }

@@ -1,23 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using WebApplication1.Data;
+﻿using WebApplication1.Data;
 using WebApplication1.Data.Services;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data.Services;
+using WebApplication1.Data;
 
-namespace WebApplication1;
+namespace ECommerce;
+
 public class Program
 {
-
-
     public static void Main(String[] args)
     {
 
         var builder = WebApplication.CreateBuilder(args);
+        //var connectionString= builder.Configuration.GetConnectionString(ConnectionStrings:DefaultConnectionString);
 
         // Add services to the container.
-        builder.Services.AddScoped<IActorsServices, ActorsService>(); //() bu new'lememizi sağlıyor.Artık IActorService istendiğinde ActorService'yi gönder.
+        builder.Services.AddScoped<IActorsService, ActorsService>();
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Data Source=SEHEROUZFDCC\\SQLEXPRESS;Initial Catalog=ECommerceDb;Integrated Security=True;Pooling=False;Encrypt=True;Trust Server Certificate=True "));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -38,11 +40,9 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
-
         AppDbInitiliazer.Seed(app);
         app.Run();
+
+
     }
 }
-
-
-
