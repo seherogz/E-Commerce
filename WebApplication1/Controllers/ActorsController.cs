@@ -70,8 +70,4 @@ public class ActorsController : Controller
         await _service.UpdateAsync(actor);
         return RedirectToAction(nameof(Index));
     }
-void metod()
-{
-   
-}
 }
