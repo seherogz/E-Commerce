@@ -61,7 +61,7 @@ public class ActorsController : Controller
 
 
     [HttpPost]
-    public async Task<IActionResult> EditAsync(Actor actor) // burası odev olarak verıldı edit kısmı olacak 
+    public async Task<IActionResult> EditAsync(Actor actor)
     {
         if (!ModelState.IsValid)
         {
