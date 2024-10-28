@@ -4,6 +4,6 @@
     {
         public int id { get; set; }
         public string name { get; set; } = string.Empty;
-        public int orderId { get; set; }
+        public int Idd { get; set; }
     }
 }
