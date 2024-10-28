@@ -3,8 +3,7 @@
     public class deneme
     {
         public int id { get; set; }
-
+        public string name { get; set; } = string.Empty;
         public int Idd { get; set; }
-
     }
 }
