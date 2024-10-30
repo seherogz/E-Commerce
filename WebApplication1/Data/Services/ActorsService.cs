@@ -22,13 +22,13 @@ public class ActorsService : IActorsService//bu class dbcontext e bağımlı
 
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
         Actor actor = _context.Actors.FirstOrDefault(x => x.Id == id);
         if (actor != null)
         {
             _context.Actors.Remove(actor);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 

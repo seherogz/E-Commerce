@@ -26,13 +26,13 @@ public class ActorsController : Controller
     }
 
 
-    public async Task<IActionResult> Create() //önce boş bir view alıyorum sonra onu doldurup yoluyorum. Yani en başta bu işlemle boş sayfa açmış oluyorum.
+    public async Task<IActionResult> Create()
     {
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Actor actor) //burda da bu boş sayfayı dolduruyorum.
+    public async Task<IActionResult> Create(Actor actor)
     {
         if (!ModelState.IsValid)
         {
@@ -45,7 +45,7 @@ public class ActorsController : Controller
 
     public async Task<IActionResult> Detail(int id)
     {
-        var actorDetail = await _service.GetByIdAsync(id); //güncelleme yaparken neyi güncelleme yapacağımı bulmak için id'sini alırım.
+        var actorDetail = await _service.GetByIdAsync(id);
         if (actorDetail is null)
         {
             return View("Empty");
@@ -54,45 +54,20 @@ public class ActorsController : Controller
     }
 
 
-    public async Task<IActionResult> EditAsync(int id) //burda get işlemi var. yazmasak bile [HttpGet] yazıyor.
+    public async Task<IActionResult> EditAsync()
     {
-        var actorDetail = await _service.GetByIdAsync(id); //burda id'si ile datadan veriyi buluyor.
-        if (actorDetail is null)
-        {
-            return View("Empty");
-        }
-        return View(actorDetail);
-    
+        return View();
     }
 
 
     [HttpPost]
-    public async Task<IActionResult> EditAsync(Actor actor) 
+    public async Task<IActionResult> EditAsync(Actor actor)
     {
         if (!ModelState.IsValid)
         {
             return View(actor);
         }
         await _service.UpdateAsync(actor);
-        return RedirectToAction(nameof(Index));
-    }
-
-    public async Task<IActionResult> Delete(int id)  //bu görüntülemek için
-    {
-        var actorDetail = await _service.GetByIdAsync(id); 
-        if (actorDetail is null)
-        {
-            return View("Empty");
-        }
-        return View(actorDetail);
-
-    }
-
-    [HttpPost,ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(int id) //burda da emin olup olmadığını soracağız.
-    {
-  
-        await _service.DeleteAsync(id);
         return RedirectToAction(nameof(Index));
     }
 }

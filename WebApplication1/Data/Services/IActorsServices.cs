@@ -14,6 +14,6 @@ namespace WebApplication1.Data.Services
 
         Task<Actor> UpdateAsync(Actor newActor);
 
-        Task DeleteAsync(int id);
+        void Delete(int id);
     }
 }
