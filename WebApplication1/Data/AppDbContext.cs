@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using WebApplication1.Models;
 
 namespace WebApplication1.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<ApplicationUser> //IdentityUser'ı ApplicationUser extend ettiği için generic şekilde yazmalıyız.
 {
 
     public DbSet<Actor> Actors { get; set; }
@@ -12,6 +13,12 @@ public class AppDbContext : DbContext
     public DbSet<Producer> Producers { get; set; }
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Cinema> Cinemas { get; set; }
+
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderItem> OrderItem { get; set; }
+
+    public DbSet<ShoppingCartItem> ShoppingCardItems { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     //DbCont4ext classı bazı optionlarbekler.(DbContextOptions generic tipte bir class istiyor. DbContexten miras alan bir classı generic kısma yazmak istiyor. sonra bunu base classa option olarak ilet.
     {

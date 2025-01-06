@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using WebApplication1.Data.Base;
 
 namespace WebApplication1.Models;
 
-public class Cinema
+public class Cinema : IEntityBase
 {
 
     [Key]

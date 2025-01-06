@@ -1,55 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApplication1.Data.Base;
 using WebApplication1.Data;
+using WebApplication1.Models;
 
 namespace WebApplication1.Models;
 
-public class Movie
+public class Movie : IEntityBase
 {
-
     [Key]
-    public int Id { get; set; } 
-
-    [Display(Name = "Filmin Resmi")]
-    public string ImageUrl { get; set; } = string.Empty;
-
-    [Display(Name = "Filmin Adı")]
+    public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-
-    [Display(Name = "Açıklama")]
     public string Description { get; set; } = string.Empty;
-
-    [Display(Name = "Tür")]
+    public double Price { get; set; }
+    public string ImageUrl { get; set; } = string.Empty;
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public MovieCategory MovieCategory { get; set; }
 
-    [Display(Name = "Başlangıç Tarihi")]
-    public DateTime StartDate { get; set; }
-
-    [Display(Name = "Bitiş Tarihi")]
-    public DateTime EndDate { get; set; }
-    
-    [Display(Name = "Ücret")]
-    public double Price { get; set; }
-
-
-    //RELATIONSHIP
-
+    //Relationships
     [ValidateNever]
     public List<Actor_Movie> Actors_Movies { get; set; }
 
+
     [ForeignKey("CinemaId")]
     [ValidateNever]
-    public int CinemaId { get; set; } //Cinema ile movie'yi birbirine bağlayan foreign key.
+    public int CinemaId { get; set; }
+
 
     [ValidateNever]
-    public Cinema Cinema { get; set; } //Bir film bir sinema salonunda sergilenecek projemizde.
+    public Cinema Cinema { get; set; }
 
-    [ForeignKey("ProducerId)")] //bu foreign key olmasını sağlıyor. Producer tablosundaki bir pk movie tablosunda kullanılıyorsa bu fk oluyor.
+
+    [ForeignKey("ProducerId")]
     [ValidateNever]
     public int ProducerId { get; set; }
+
 
     [ValidateNever]
     public Producer Producer { get; set; }
 }
-

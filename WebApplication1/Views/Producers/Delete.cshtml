@@ -1,0 +1,54 @@
+﻿@model Producer
+@{
+    ViewData["Title"] = "Delete an Producer";
+}
+
+<div class="row text">
+
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>@Model.FullName Silme</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img id="ProfilePictureUrlView" class="border-info rounded-circle" style="max-width=150px;" />
+                </div>
+                <div class="form-group mt-1">
+                    <label asp-for="ProfilePictureUrl" class="control-label"></label>
+                    <input asp-for="ProfilePictureUrl" class="form-control" readonly />
+                </div>
+                <div class="form-group mt-1">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" readonly />
+                </div>
+                <div class="form-group mt-1">
+                    <label asp-for="Bio" class="control-label"></label>
+                    <input asp-for="Bio" class="form-control" readonly />
+                </div>
+                <div class="form-group mt-3">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" /> <!--görselde göstermemek için id'nin type'si hidden-->
+                        <input type="submit" value="Sil" class="btn btn-danger float-lg-end" />
+                    </form>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Listeye Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePictureUrlView');
+            output.src = $('#ProfilePictureUrl').val();
+        });
+
+        $('#ProfilePictureUrl').on('change', function () {
+            var output = document.getElementById('ProfilePictureUrlView');
+            output.src = $(this).val();
+        });
+    </script>
+}

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using WebApplication1.Data.Base;
 
 namespace WebApplication1.Models;
 
-public class Actor
+public class Actor : IEntityBase
 {
 
     [Key]
