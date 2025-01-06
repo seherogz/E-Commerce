@@ -24,7 +24,7 @@ public class MovieVM
     [Required(ErrorMessage = "Film afişi gereklidir")]
     public string ImageUrl { get; set; } = string.Empty;
 
-    [Display(Name = "Film gösterim başlangıç tarihi")]
+    [Display(Name = "Film gösteriminin başlangıç tarihi")]
     [Required(ErrorMessage = "Film gösterim başlangıç tarihi gereklidir")]
     public DateTime StartDate { get; set; }
 
