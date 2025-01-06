@@ -16,7 +16,7 @@ public class ShoppingCart
     public void AddItemToCart(Movie movie)
     {
         var shoppingCartItem = _context.ShoppingCardItems.FirstOrDefault(x => x.Movie.Id == movie.Id
-        && x.ShoppingCardId == ShoppingCartId); //birinci koşulda benim verdiğim id ile o filmin ıdsi tutuyor mu onu kontrol ediyorum.  ikinci koşulda verilen sepet ıd'deki sepette olup olmadığımı kontrol ediyorum.
+        && x.ShoppingCardId == ShoppingCartId); //birinci koşulda benim verdiğim id ile o filmin idsi tutuyor mu onu kontrol ediyorum.  ikinci koşulda verilen sepet ıd'deki sepette olup olmadığımı kontrol ediyorum.
 
         if (shoppingCartItem is null )
         {
