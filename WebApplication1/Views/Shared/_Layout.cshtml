@@ -29,16 +29,21 @@
                            </a>
                        </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-gear"></i> Yönetim
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Sinemalar</a></li>
-                                <li><a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Prodüktörler</a></li>
-                                <li><a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Aktörler</a></li>
-                            </ul>
-                        </li>
+                       @if(User.Identity.IsAuthenticated && User.IsInRole("admin")){
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-gear"></i> Yönetim
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Sinemalar</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Prodüktörler</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Aktörler</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                       
                     </ul>
 
                     
@@ -51,6 +56,12 @@
                         </div>
 
                     </form>
+
+                    <ul class="navbar-nav"> 
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </ul>
+
+                    <partial name="_identity.cshtml" />
 
                 </div>
             </div>

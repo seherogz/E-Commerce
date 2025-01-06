@@ -46,9 +46,9 @@ public class ActorsController : Controller
     public async Task<IActionResult> Detail(int id)
     {
         var actorDetail = await _service.GetByIdAsync(id); //güncelleme yaparken neyi güncelleme yapacağımı bulmak için id'sini alırım.
-        if (actorDetail is null)
+        if (actorDetail.Id == 0)
         {
-            return View("Empty");
+            return View("_NotFound");
         }
         return View(actorDetail);
     }
@@ -57,9 +57,9 @@ public class ActorsController : Controller
     public async Task<IActionResult> EditAsync(int id) //burda get işlemi var. yazmasak bile [HttpGet] yazıyor.
     {
         var actorDetail = await _service.GetByIdAsync(id); //burda id'si ile datadan veriyi buluyor.
-        if (actorDetail is null)
+        if (actorDetail.Id == 0)
         {
-            return View("Empty");
+            return View("_NotFound");
         }
         return View(actorDetail);
     
@@ -80,9 +80,9 @@ public class ActorsController : Controller
     public async Task<IActionResult> Delete(int id)  //bu görüntülemek için
     {
         var actorDetail = await _service.GetByIdAsync(id); 
-        if (actorDetail is null)
+        if (actorDetail.Id == 0)
         {
-            return View("Empty");
+            return View("_NotFound");
         }
         return View(actorDetail);
 

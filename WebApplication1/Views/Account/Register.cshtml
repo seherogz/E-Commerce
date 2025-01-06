@@ -1,0 +1,64 @@
+﻿@using WebApplication1.ViewModels;
+@model RegisterVm
+@{
+    ViewData["Title"] = "Log-in";
+}
+
+<div class="row">
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="col-md-12 alert alert-danger text-center">
+            <span><b>Üzgünüz.</b> - @TempData["Error"]</span>
+        </div>
+
+    }
+    <div class="col-md-8 offset-3">
+        <p>
+            <h4>Lütfen E-mail hesabınız ile giriş yapınız.</h4>
+        </p> 
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Register" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="EmailAddress" class="control-label"></label>
+                        <input asp-for = "EmailAddress" class="form-control"/>
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ConfirmePassword" class="control-label"></label>
+                        <input asp-for="ConfirmePassword" class="form-control" />
+                        <span asp-validation-for="ConfirmePassword" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="submit" class="btn btn-outline-success float-lg-end" value="Sign up" />
+                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Vazgeç</a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

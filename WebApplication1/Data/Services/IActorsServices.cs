@@ -1,19 +1,11 @@
-﻿using WebApplication1.Models;
+﻿using WebApplication1.Data.Base;
+using WebApplication1.Models;
 
 namespace WebApplication1.Data.Services
 {
-  
- 
-    public interface IActorsService
+
+
+    public interface IActorsService : IEntityBaseRepository<Actor>
     {
-        Task<IEnumerable<Actor>> GetAllAsync();
-
-        Task<Actor> GetByIdAsync(int id);
-
-        Task AddAsync(Actor actor);
-
-        Task<Actor> UpdateAsync(Actor newActor);
-
-        Task DeleteAsync(int id);
     }
 }
